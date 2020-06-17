@@ -89,6 +89,8 @@ export iovr_lw=3    ;#de-correlation length cloud overlap method (Barker, 2008)
 export iovr_sw=3    ;#de-correlation length cloud overlap method (Barker, 2008)
 export icliq_sw=2   ;#cloud optical coeffs from AER's newer version v3.9-v4.0 for hu and stamnes
 
+export FHSWR=$DELTIM
+export FHLWR=$DELTIM
 
 # Microphysics configuration
 export dnats=0
