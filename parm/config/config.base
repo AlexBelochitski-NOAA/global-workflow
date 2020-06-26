@@ -119,8 +119,8 @@ export SENDDBN="NO"
 export SENDSDM="NO"
 
 # Resolution specific parameters
-#export LEVS=128
-export LEVS=65 #128
+export LEVS=128
+#export LEVS=65 #128
 export CASE="@CASECTL@"
 export CASE_ENKF="@CASEENS@"
 
@@ -146,9 +146,11 @@ export gfs_cyc=@gfs_cyc@ # 0: no GFS cycle, 1: 00Z only, 2: 00Z and 12Z only, 4:
 # GFS output and frequency
 export FHMIN_GFS=0
 
-export FHMAX_GFS_00=240
+#export FHMAX_GFS_00=240
+export FHMAX_GFS_00=24
 #export FHMAX_GFS_00=384
-export FHMAX_GFS_06=384
+#export FHMAX_GFS_06=384
+export FHMAX_GFS_06=240
 export FHMAX_GFS_12=384
 export FHMAX_GFS_18=384
 export FHMAX_GFS=$(eval echo \${FHMAX_GFS_$cyc})
@@ -164,7 +166,7 @@ export FHOUT_HF_GFS=1
 export QUILTING=".true."
 export OUTPUT_GRID="gaussian_grid"
 export OUTPUT_FILE="netcdf"
-export WRITE_DOPOST=".true."
+export WRITE_DOPOST=".false."
 
 # suffix options depending on file format
 if [ $OUTPUT_FILE = "netcdf" ]; then
@@ -206,8 +208,8 @@ export DO_WAVE="NO"
 export WAVE_CDUMP="gdas"
 
 # Microphysics Options: 99-ZhaoCarr, 8-Thompson; 6-WSM6, 10-MG, 11-GFDL
-export imp_physics=99 
-#export imp_physics=11
+#export imp_physics=99 
+export imp_physics=11
 
 # Shared parameters
 # Hybrid related
