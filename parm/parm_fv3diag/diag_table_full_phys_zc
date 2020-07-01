@@ -1,0 +1,125 @@
+"fv3_history",    0,  "hours",  1,  "hours",  "time"
+"fv3_history2d",  0,  "hours",  1,  "hours",  "time"
+
+
+
+#"gfs_dyn",     "ucomp",       "ugrd",         "fv3_history",    "all",  .false.,  "none",  2
+#"gfs_dyn",     "vcomp",       "vgrd",         "fv3_history",    "all",  .false.,  "none",  2
+#"gfs_dyn",     "sphum",       "spfh",         "fv3_history",    "all",  .false.,  "none",  2
+#"gfs_dyn",     "temp",        "tmp",          "fv3_history",    "all",  .false.,  "none",  2
+#"gfs_dyn",     "liq_wat",     "clwmr",        "fv3_history",    "all",  .false.,  "none",  2
+#"gfs_dyn",     "ice_wat",     "icmr",         "fv3_history",    "all",  .false.,  "none",  2
+#"gfs_dyn",     "snowwat",     "snmr",         "fv3_history",    "all",  .false.,  "none",  2
+#"gfs_dyn",     "rainwat",     "rwmr",         "fv3_history",    "all",  .false.,  "none",  2
+#"gfs_dyn",     "graupel",     "grle",         "fv3_history",    "all",  .false.,  "none",  2
+"gfs_dyn",     "ps",          "pressfc",      "fv3_history",    "all",  .false.,  "none",  2
+#"gfs_dyn",     "hs",          "hgtsfc",       "fv3_history",    "all",  .false.,  "none",  2
+
+
+"gfs_sfc",     "q2m",           "spfh2m",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_sfc",     "t2m",           "tmp2m",        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "canopy",        "cnwat",        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "soilt1",        "soilt1"        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "soilt2",        "soilt2"        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "soilt3",        "soilt3"        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "soilt4",        "soilt4"        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "soilw1",        "soilw1"        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "soilw2",        "soilw2"        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "soilw3",        "soilw3"        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "soilw4",        "soilw4"        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "slc_1",         "soill1",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "slc_2",         "soill2",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "slc_3",         "soill3",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "slc_4",         "soill4",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_sfc",     "ps1",         "ps1",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_sfc",     "ps2",         "ps2",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "tsfc",          "tmpsfc",       "fv3_history2d",  "all",  .false.,  "none",  2
+
+#"gfs_phys",    "pgr",           "pgr",          "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "hice",          "hice",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_sfc",     "weasd",       "weasd",         "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_sfc",     "uustar",        "fricv",        "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_sfc",     "ffhh",          "ffhh",         "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_sfc",     "ffmm",          "ffmm",         "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_sfc",     "snoalb",        "snoalb",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_sfc",     "qrain",         "qrain",        "fv3_history2d",  "all",  .false.,  "none",  2
+
+
+"gfs_phys",     "solcon",        "solcon",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",     "year",        "year",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",     "month",        "month",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",     "lat",        "lat",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",     "lon",        "lon",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",     "cosz",        "cosz",       "fv3_history2d",  "all",  .false.,  "none",  2
+
+
+
+#"gfs_phys",     "phii",         "phii",        "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_phys",    "prsi",          "prsi",         "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "phil",         "phil",        "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "prsl",           "prsl",          "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "pgr",           "pgr",          "fv3_history2d",  "all",  .false.,  "none",  2
+
+"gfs_phys",    "ugrs",          "ugrs",         "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "vgrs",          "vgrs",         "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "vvl",          "vvl",         "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "tgrs",          "tgrs",         "fv3_history2d",  "all",  .false.,  "none",  2
+
+"gfs_phys",    "sphum",     "sphum",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "liq_wat",     "totwat",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_phys",    "rainwat",     "rainwat",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_phys",    "ice_wat",     "ice_wat",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_phys",    "snowwat",     "snowwat",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_phys",    "graupl",     "graupel",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_phys",    "cldamt",     "cldamt",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "o3mr",     "ozone",       "fv3_history2d",  "all",  .false.,  "none",  2
+
+"gfs_phys",    "gu0",     "gu0",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "gv0",     "gv0",      "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "gt0",     "gt0",      "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "usphum",  "usphum",       "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "uliq_wat", "utotwat",      "fv3_history2d",  "all",  .false.,  "none",  2
+"gfs_phys",    "uo3mr",     "uo3mr",      "fv3_history2d",  "all",  .false.,  "none",  2
+
+#"gfs_phys",    "tp1",     "tp1",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_phys",    "qp1",     "qp1",      "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_phys",    "tp2",     "tp2",       "fv3_history2d",  "all",  .false.,  "none",  2
+#"gfs_phys",    "qp2",     "qp2",      "fv3_history2d",  "all",  .false.,  "none",  2
+
+
+
+
+
+#=============================================================================================
+#
+#====> This file can be used with diag_manager/v2.0a (or higher) <====
+#
+#
+#  FORMATS FOR FILE ENTRIES (not all input values are used)
+#  ------------------------
+#
+#"file_name", output_freq, "output_units", format, "time_units", "long_name",
+#
+#
+#output_freq:  > 0  output frequency in "output_units"
+#              = 0  output frequency every time step
+#              =-1  output frequency at end of run
+#
+#output_units = units used for output frequency
+#               (years, months, days, minutes, hours, seconds)
+#
+#time_units   = units used to label the time axis
+#               (days, minutes, hours, seconds)
+#
+#
+#  FORMAT FOR FIELD ENTRIES (not all input values are used)
+#  ------------------------
+#
+#"module_name", "field_name", "output_name", "file_name" "time_sampling", time_avg, "other_opts", packing
+#
+#time_avg = .true. or .false.
+#
+#packing  = 1  double precision
+#         = 2  float
+#         = 4  packed 16-bit integers
+#         = 8  packed 1-byte (not tested?)

@@ -67,8 +67,11 @@ if [ $LEVS = "128" -a "$CDUMP" = "gdas" ]; then
 fi
 
 # PBL/turbulance schemes
-export hybedmf=".false."
-export satmedmf=".true."
+#export hybedmf=".false."
+#export satmedmf=".true."
+export hybedmf=".true."
+export satmedmf=".false."
+
 export isatmedmf=1
 tbf=""
 if [ $satmedmf = ".true." ]; then tbf="_satmedmf" ; fi
@@ -89,6 +92,8 @@ export iovr_lw=3    ;#de-correlation length cloud overlap method (Barker, 2008)
 export iovr_sw=3    ;#de-correlation length cloud overlap method (Barker, 2008)
 export icliq_sw=2   ;#cloud optical coeffs from AER's newer version v3.9-v4.0 for hu and stamnes
 
+export FHSWR=$DELTIM
+export FHLWR=$DELTIM
 
 # Microphysics configuration
 export dnats=0
@@ -144,6 +149,11 @@ export ishuffle=0
 # compression for RESTART files written by FMS 
 export shuffle=1
 export deflate_level=1
+
+# Debugging and diagnostic options of FV3
+export fv_debug=.true.
+export range_warn=.true.
+export print_freq=-1
 
 export OUTPUT_FILETYPES="$OUTPUT_FILE"
 if [[ "$OUTPUT_FILE" == "netcdf" ]]; then
@@ -208,7 +218,8 @@ elif [[ "$CDUMP" == "gfs" ]] ; then # GFS cycle specific parameters
 
     # Write more variables to output
     if [ $QUILTING = ".true." -a $OUTPUT_GRID = "gaussian_grid" ]; then
-        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table"
+#        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table"
+	export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_full_phys_zc"
     else
         export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_orig"
     fi

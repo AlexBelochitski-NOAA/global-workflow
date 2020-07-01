@@ -38,7 +38,7 @@ source ./machine-setup.sh > /dev/null 2>&1
 # INCLUDE PARTIAL BUILD 
 #------------------------------------
 
-. ./partial_build.sh
+. ./partial_build.sh --verbose
 
 #------------------------------------
 # Exception Handling Init

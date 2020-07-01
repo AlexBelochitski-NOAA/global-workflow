@@ -1244,22 +1244,61 @@ if [ $QUILTING = ".true." -a $OUTPUT_GRID = "gaussian_grid" ]; then
   while [ $fhr -le $FHMAX ]; do
     FH3=$(printf %03i $fhr)
     FH2=$(printf %02i $fhr)
-    atmi=atmf${FH3}.$affix
-    sfci=sfcf${FH3}.$affix
-    logi=logf${FH3}
-    pgbi=GFSPRS.GrbF${FH2}
-    flxi=GFSFLX.GrbF${FH2}
-    atmo=$memdir/${CDUMP}.t${cyc}z.atmf${FH3}.$affix
-    sfco=$memdir/${CDUMP}.t${cyc}z.sfcf${FH3}.$affix
-    logo=$memdir/${CDUMP}.t${cyc}z.logf${FH3}.txt
-    pgbo=$memdir/${CDUMP}.t${cyc}z.master.grb2f${FH3}
-    flxo=$memdir/${CDUMP}.t${cyc}z.sfluxgrbf${FH3}.grib2
-    eval $NLN $atmo $atmi
-    eval $NLN $sfco $sfci
-    eval $NLN $logo $logi
+
+    FH31=${FH3}:00:00
+    FH32=${FH3}:07:30
+    FH21=${FH2}:00:00
+    FH22=${FH2}:07:30
+
+#    atmi=atmf${FH3}.$affix
+#    sfci=sfcf${FH3}.$affix
+#    logi=logf${FH3}
+#    pgbi=GFSPRS.GrbF${FH2}
+#    flxi=GFSFLX.GrbF${FH2}
+#    atmo=$memdir/${CDUMP}.t${cyc}z.atmf${FH3}.$affix
+#    sfco=$memdir/${CDUMP}.t${cyc}z.sfcf${FH3}.$affix
+#    logo=$memdir/${CDUMP}.t${cyc}z.logf${FH3}.txt
+#    pgbo=$memdir/${CDUMP}.t${cyc}z.master.grb2f${FH3}
+#    flxo=$memdir/${CDUMP}.t${cyc}z.sfluxgrbf${FH3}.grib2
+#    eval $NLN $atmo $atmi
+#    eval $NLN $sfco $sfci
+#    eval $NLN $logo $logi
+
+    atmi1=atmf${FH31}.$affix
+    sfci1=sfcf${FH31}.$affix
+    logi1=logf${FH31}
+    pgbi1=GFSPRS.GrbF${FH21}
+    flxi1=GFSFLX.GrbF${FH21}
+    atmo1=$memdir/${CDUMP}.t${cyc}z.atmf${FH31}.$affix
+    sfco1=$memdir/${CDUMP}.t${cyc}z.sfcf${FH31}.$affix
+    logo1=$memdir/${CDUMP}.t${cyc}z.logf${FH31}.txt
+    pgbo1=$memdir/${CDUMP}.t${cyc}z.master.grb2f${FH31}
+    flxo1=$memdir/${CDUMP}.t${cyc}z.sfluxgrbf${FH31}.grib2
+    eval $NLN $atmo1 $atmi1
+    eval $NLN $sfco1 $sfci1
+    eval $NLN $logo1 $logi1
+
+    atmi2=atmf${FH32}.$affix
+    sfci2=sfcf${FH32}.$affix
+    logi2=logf${FH32}
+    pgbi2=GFSPRS.GrbF${FH22}
+    flxi2=GFSFLX.GrbF${FH22}
+    atmo2=$memdir/${CDUMP}.t${cyc}z.atmf${FH32}.$affix
+    sfco2=$memdir/${CDUMP}.t${cyc}z.sfcf${FH32}.$affix
+    logo2=$memdir/${CDUMP}.t${cyc}z.logf${FH32}.txt
+    pgbo2=$memdir/${CDUMP}.t${cyc}z.master.grb2f${FH32}
+    flxo2=$memdir/${CDUMP}.t${cyc}z.sfluxgrbf${FH32}.grib2
+    eval $NLN $atmo2 $atmi2
+    eval $NLN $sfco2 $sfci2
+    eval $NLN $logo2 $logi2
+
     if [ $WRITE_DOPOST = ".true." ]; then
-      eval $NLN $pgbo $pgbi
-      eval $NLN $flxo $flxi
+#      eval $NLN $pgbo $pgbi
+#      eval $NLN $flxo $flxi
+      eval $NLN $pgbo1 $pgbi1
+      eval $NLN $flxo1 $flxi1
+      eval $NLN $pgbo2 $pgbi2
+      eval $NLN $flxo2 $flxi2
     fi
     FHINC=$FHOUT
     if [ $FHMAX_HF -gt 0 -a $FHOUT_HF -gt 0 -a $fhr -lt $FHMAX_HF ]; then
