@@ -134,6 +134,75 @@ else
     echo "Unknown microphysics option, ABORT!"
 
 fi
+
+# Chikira-Sugiyama Deep Convection Parameterization Configuration
+
+#export cscnv=".true."
+export cscnv=".false."
+
+if [ $cscnv = ".true." ]; then
+
+ #export cs_parm="10.0,4.0,1.5e3,3.0e3,20.0,0.0,0.0,0.0,0.0,0.0" # adv. form AW
+ #export cs_parm="10.0,4.0,1.5e3,3.0e3,20.0,0.0,0.0,1.0,0.0,0.0"
+ export  cs_parm="8.0, 4.0,1.0e3,3.5e3,20.0,1.0,0.0,1.0,0.0,0.0"
+
+ # Default settings for CS/AW
+ #export cs_parm "10.0,4.0,1.0e3,2.0e3,20.0,1.0,-999.,0.,0.,0."
+ export do_aw=.true.
+ export flx_form=.true.
+
+fi
+
+# SHOC Configuration
+
+#export do_shoc=".true."
+export do_shoc=".false."
+
+
+
+if [ $do_shoc = ".true." ]; then
+
+    export FIELD_TABLE="$HOMEgfs/parm/parm_fv3diag/field_table_zhaocarr_shoc"
+#    export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_shoc"
+    export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_shoc_diag"
+
+# Default settings for SHOC
+    #export shoc_parm= "7000.0,1.0,4.2857143,0.7,-999.0"
+#    export  shoc_parm="7000.0,1.0,2.0,0.7,-999.0"
+    export  shoc_parm="7000.0,1.0,2.0,0.7,-999.0,2"
+
+    export shoc_diag=.true.
+
+    export shal_cnv=.false.
+    export hybedmf=.false.
+    export satmedmf=.false.
+    export shoc_cld=.true.
+    export shocafterconv=.false.
+    export psautco="16.0e-4,10.0e-4"
+#    export psautco=${psautco:-"1.0d-2,1.0d-2"}
+#    export psautco=${psautco:-"8.0d-4,5.0d-4"} #std
+#    export prautco=${prautco:-"10.0d-4,7.5d-4"}
+    export prautco=${prautco:-"0.00015,0.00015"}  # std
+#     export prautco=${prautco:-"0.00050,0.00050"}
+
+#    export evpco=${evpco:-"2.0d-5"}
+#    export wminco= ${wminco:-"1.0d-5,1.0d-5"}
+    export wminco="1.0d-8,0"
+
+#    export sup=1.05
+#    export crtrh='1.00,1.00,1.00'
+    export n_sponge=$((LEVS-1))
+#    export ctei_rm='0.60,0.23'
+
+fi
+
+# Debugging and diagnostic options of FV3
+
+export fv_debug=.true.
+export range_warn=.true.
+export print_freq=-1
+
+
 #---------------------------------------------------------------------
 
 # ideflate: netcdf zlib lossless compression (0-9): 0 no compression
@@ -208,7 +277,13 @@ elif [[ "$CDUMP" == "gfs" ]] ; then # GFS cycle specific parameters
 
     # Write more variables to output
     if [ $QUILTING = ".true." -a $OUTPUT_GRID = "gaussian_grid" ]; then
-        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table"
+
+	if [$shoc_diag = ".true." ]; then 
+            export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_shoc_diag"
+	else
+	    export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table"
+	fi
+
     else
         export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_orig"
     fi
