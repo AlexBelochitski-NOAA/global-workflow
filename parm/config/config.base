@@ -52,7 +52,10 @@ export DO_GEMPAK="NO"
 export DO_AWIPS="NO"
 
 # NO for retrospective parallel; YES for real-time parallel
-export REALTIME="NO"
+#  arch.sh uses REALTIME for MOS.  Need to set REALTIME=YES
+#  if want MOS written to HPSS.   Should update arch.sh to
+#  use RUNMOS flag (currently in config.vrfy)
+export REALTIME="YES"
 
 
 ####################################################
@@ -80,6 +83,8 @@ export KEEPDATA="NO"
 export CHGRP_RSTPROD="@CHGRP_RSTPROD@"
 export CHGRP_CMD="@CHGRP_CMD@"
 export NEMSIOGET="$HOMEgfs/exec/nemsio_get"
+export NCDUMP="$NETCDF/bin/ncdump"
+export NCLEN="$HOMEgfs/ush/getncdimlen"
 
 # Machine environment, jobs, and other utility scripts
 export BASE_ENV="$HOMEgfs/env"
@@ -95,6 +100,9 @@ export EXPDIR="@EXPDIR@/$PSLOT"
 export ROTDIR="@ROTDIR@/$PSLOT"
 export ROTDIR_DUMP="YES"                #Note: A value of "NO" does not currently work
 export DUMP_SUFFIX=""
+if [[ "$CDATE" -ge "2019092100" && "$CDATE" -le "2019110700" ]]; then
+    export DUMP_SUFFIX="p"              # Use dumps from NCO GFS v15.3 parallel
+fi
 export RUNDIR="$STMP/RUNDIRS/$PSLOT"
 export DATAROOT="$RUNDIR/$CDATE/$CDUMP"
 export ARCDIR="$NOSCRUB/archive/$PSLOT"
@@ -119,8 +127,8 @@ export SENDDBN="NO"
 export SENDSDM="NO"
 
 # Resolution specific parameters
+export LEVS=65
 #export LEVS=128
-export LEVS=65 #128
 export CASE="@CASECTL@"
 export CASE_ENKF="@CASEENS@"
 
@@ -156,6 +164,11 @@ export FHMAX_GFS=$(eval echo \${FHMAX_GFS_$cyc})
 export FHOUT_GFS=3
 export FHMAX_HF_GFS=0
 export FHOUT_HF_GFS=1
+export ILPOST=1           # gempak output frequency up to F120
+
+# GFS restart interval in hours
+export restart_interval_gfs=0
+
 
 # I/O QUILTING, true--use Write Component; false--use GFDL FMS
 # if quilting=true, choose OUTPUT_GRID as cubed_sphere_grid in netcdf or gaussian_grid
@@ -163,10 +176,10 @@ export FHOUT_HF_GFS=1
 # WRITE_DOPOST=true, use inline POST
 export QUILTING=".true."
 export OUTPUT_GRID="gaussian_grid"
-#export OUTPUT_FILE="netcdf"
 export OUTPUT_FILE="nemsio"
-#export WRITE_DOPOST=".true."
+#export OUTPUT_FILE="netcdf"
 export WRITE_DOPOST=".false."
+#export WRITE_DOPOST=".true."
 
 # suffix options depending on file format
 if [ $OUTPUT_FILE = "netcdf" ]; then
@@ -205,10 +218,10 @@ export gldas_cyc=00
 # run wave component
 export DO_WAVE="NO"
 #export DO_WAVE="YES"
-export WAVE_CDUMP="gdas"
+export WAVE_CDUMP="both"
 
 # Microphysics Options: 99-ZhaoCarr, 8-Thompson; 6-WSM6, 10-MG, 11-GFDL
-export imp_physics=99 
+export imp_physics=99
 #export imp_physics=11
 
 # Shared parameters
@@ -260,9 +273,12 @@ export binary_diag=".false."
 export DO_METP="YES"                  # Run MET+ jobs
 
 # Archiving options
-export HPSSARCH="NO"         # save data to HPSS archive
+export HPSSARCH="NO"        # save data to HPSS archive
+#export HPSSARCH="YES"        # save data to HPSS archive
 export ARCH_CYC=00           # Archive data at this cycle for warm_start capability
 export ARCH_WARMICFREQ=4     # Archive frequency in days for warm_start capability
 export ARCH_FCSTICFREQ=1     # Archive frequency in days for gdas and gfs forecast-only capability
+
+export DELETE_COM_IN_ARCHIVE_JOB="YES"   # NO=retain ROTDIR.  YES default in arch.sh and earc.sh.
 
 echo "END: config.base"
