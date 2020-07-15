@@ -137,8 +137,8 @@ fi
 
 # Chikira-Sugiyama Deep Convection Parameterization Configuration
 
-#export cscnv=".true."
-export cscnv=".false."
+export cscnv=".true."
+#export cscnv=".false."
 
 if [ $cscnv = ".true." ]; then
 
@@ -155,8 +155,8 @@ fi
 
 # SHOC Configuration
 
-#export do_shoc=".true."
-export do_shoc=".false."
+export do_shoc=".true."
+#export do_shoc=".false."
 
 
 
