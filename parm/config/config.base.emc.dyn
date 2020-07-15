@@ -127,7 +127,8 @@ export SENDDBN="NO"
 export SENDSDM="NO"
 
 # Resolution specific parameters
-export LEVS=128
+export LEVS=65
+#export LEVS=128
 export CASE="@CASECTL@"
 export CASE_ENKF="@CASEENS@"
 
@@ -153,7 +154,8 @@ export gfs_cyc=@gfs_cyc@ # 0: no GFS cycle, 1: 00Z only, 2: 00Z and 12Z only, 4:
 # GFS output and frequency
 export FHMIN_GFS=0
 
-export FHMAX_GFS_00=384
+export FHMAX_GFS_00=240
+#export FHMAX_GFS_00=384
 export FHMAX_GFS_06=384
 export FHMAX_GFS_12=384
 export FHMAX_GFS_18=384
@@ -174,8 +176,10 @@ export restart_interval_gfs=0
 # WRITE_DOPOST=true, use inline POST
 export QUILTING=".true."
 export OUTPUT_GRID="gaussian_grid"
-export OUTPUT_FILE="netcdf"
-export WRITE_DOPOST=".true."
+export OUTPUT_FILE="nemsio"
+#export OUTPUT_FILE="netcdf"
+export WRITE_DOPOST=".false."
+#export WRITE_DOPOST=".true."
 
 # suffix options depending on file format
 if [ $OUTPUT_FILE = "netcdf" ]; then
@@ -189,7 +193,8 @@ else
 fi
 
 # IAU related parameters
-export DOIAU="YES"        # Enable 4DIAU for control with 3 increments
+export DOIAU="NO"        # Enable 4DIAU for control with 3 increments
+#export DOIAU="YES"        # Enable 4DIAU for control with 3 increments
 export IAUFHRS="3,6,9"
 export IAU_FHROT=`echo $IAUFHRS | cut -c1`
 export IAU_DELTHRS=6
@@ -206,15 +211,18 @@ fi
 export lobsdiag_forenkf=".true."
 
 # run GLDAS to spin up land ICs
-export DO_GLDAS="YES"
+export DO_GLDAS="NO"
+#export DO_GLDAS="YES"
 export gldas_cyc=00
 
 # run wave component
-export DO_WAVE="YES"
+export DO_WAVE="NO"
+#export DO_WAVE="YES"
 export WAVE_CDUMP="both"
 
 # Microphysics Options: 99-ZhaoCarr, 8-Thompson; 6-WSM6, 10-MG, 11-GFDL
-export imp_physics=11
+export imp_physics=99
+#export imp_physics=11
 
 # Shared parameters
 # Hybrid related
@@ -265,7 +273,8 @@ export binary_diag=".false."
 export DO_METP="YES"                  # Run MET+ jobs
 
 # Archiving options
-export HPSSARCH="YES"        # save data to HPSS archive
+export HPSSARCH="NO"        # save data to HPSS archive
+#export HPSSARCH="YES"        # save data to HPSS archive
 export ARCH_CYC=00           # Archive data at this cycle for warm_start capability
 export ARCH_WARMICFREQ=4     # Archive frequency in days for warm_start capability
 export ARCH_FCSTICFREQ=1     # Archive frequency in days for gdas and gfs forecast-only capability

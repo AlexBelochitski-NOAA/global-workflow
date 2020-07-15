@@ -23,6 +23,6 @@ cd fv3gfs.fd/
 FV3=$( pwd -P )/FV3
 cd tests/
 #./compile.sh "$FV3" "$target" "WW3=Y 32BIT=Y" 1
-./compile.sh "$FV3" "$target" "WW3=N 32BIT=Y DEBUG=N" 1 NO NO
+./compile.sh "$FV3" "$target" "WW3=N 32BIT=Y DEBUG=Y" 1 NO NO
 
 mv -f fv3_1.exe ../NEMS/exe/global_fv3gfs.x
