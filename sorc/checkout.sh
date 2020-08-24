@@ -1,6 +1,23 @@
 #!/bin/sh
 set -xue
 
+while getopts "o" option;
+do
+ case $option in
+  o)
+   echo "Received -o flag for optional checkout of GTG, will check out GTG with EMC_post"
+   checkout_gtg="YES"
+   ;;
+  :)
+   echo "option -$OPTARG needs an argument"
+   ;;
+  *)
+   echo "invalid option -$OPTARG, exiting..."
+   exit
+   ;;
+ esac
+done
+
 topdir=$(pwd)
 echo $topdir
 
@@ -33,8 +50,7 @@ if [[ ! -d gldas.fd ]] ; then
     rm -f ${topdir}/checkout-gldas.log
     git clone https://github.com/NOAA-EMC/GLDAS.git gldas.fd >> ${topdir}/checkout-gldas.fd.log 2>&1
     cd gldas.fd
-    #git checkout gldas_gfsv16_release.v1.2.0
-    git checkout feature/orion_port
+    git checkout gldas_gfsv16_release.v1.4.0
     cd ${topdir}
 else
     echo 'Skip.  Directory gldas.fd already exists.'
@@ -43,11 +59,9 @@ fi
 echo ufs_utils checkout ...
 if [[ ! -d ufs_utils.fd ]] ; then
     rm -f ${topdir}/checkout-ufs_utils.log
-    #git clone https://github.com/NOAA-EMC/UFS_UTILS.git ufs_utils.fd >> ${topdir}/checkout-ufs_utils.fd.log 2>&1
-    git clone --recursive https://github.com/GeorgeGayno-NOAA/UFS_UTILS.git ufs_utils.fd >> ${topdir}/checkout-ufs_utils.fd.log 2>&1
+    git clone https://github.com/NOAA-EMC/UFS_UTILS.git ufs_utils.fd >> ${topdir}/checkout-ufs_utils.fd.log 2>&1
     cd ufs_utils.fd
-    #git checkout release/ops-gfsv16 
-    git checkout feature/orion
+    git checkout release/ops-gfsv16 
     cd ${topdir}
 else
     echo 'Skip.  Directory ufs_utils.fd already exists.'
@@ -58,7 +72,19 @@ if [[ ! -d gfs_post.fd ]] ; then
     rm -f ${topdir}/checkout-gfs_post.log
     git clone https://github.com/NOAA-EMC/EMC_post.git gfs_post.fd >> ${topdir}/checkout-gfs_post.log 2>&1
     cd gfs_post.fd
-    git checkout upp_gfsv16_release.v1.0.10
+    git checkout upp_gfsv16_release.v1.0.11
+    ################################################################################
+    # checkout_gtg
+    ## yes: The gtg code at NCAR private repository is available for ops. GFS only.
+    #       Only approved persons/groups have access permission.
+    ## no:  No need to check out gtg code for general GFS users.
+    ################################################################################
+    checkout_gtg=${checkout_gtg:-"NO"}
+    if [[ ${checkout_gtg} == "YES" ]] ; then
+      ./manage_externals/checkout_externals
+      cp sorc/post_gtg.fd/*f90 sorc/ncep_post.fd/.
+      cp sorc/post_gtg.fd/gtg.config.gfs parm/.
+    fi
     cd ${topdir}
 else
     echo 'Skip.  Directory gfs_post.fd already exists.'
