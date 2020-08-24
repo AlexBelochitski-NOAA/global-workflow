@@ -18,17 +18,17 @@
  "TRACER", "atmos_mod", "qt_sec"
            "longname",     "variance of total water mixing ratio"
            "units",        "kg2/kg2"
-       "profile_type", "fixed", "surface_value=1.e30" /
+       "profile_type", "fixed", "surface_value=1.e-30" /
 # prognostic variance of moist static energy
  "TRACER", "atmos_mod", "thl_sec"
            "longname",     "variance of moist static energy"
            "units",        "K2"
-       "profile_type", "fixed", "surface_value=1.e30" /
+       "profile_type", "fixed", "surface_value=1.e-30" /
 # prognostic subgrid scale turbulent kinetic energy
  "TRACER", "atmos_mod", "sgs_tke"
            "longname",     "subgrid scale turbulent kinetic energy"
            "units",        "m2/s2"
-       "profile_type", "fixed", "surface_value=1.e30" /
+       "profile_type", "fixed", "surface_value=1.e-30" /
 
 
 
