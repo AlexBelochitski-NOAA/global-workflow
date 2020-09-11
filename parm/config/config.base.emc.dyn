@@ -44,12 +44,12 @@ export NOSCRUB="@NOSCRUB@"
 
 # Base directories for various builds
 export BASE_GIT="@BASE_GIT@"
-export BASE_SVN="@BASE_SVN@"
 
 # Toggle to turn on/off GFS downstream processing.
-export DO_BUFRSND="YES"
-export DO_GEMPAK="NO"
-export DO_AWIPS="NO"
+export DO_BUFRSND="YES"    # BUFR sounding products
+export DO_GEMPAK="NO"      # GEMPAK products
+export DO_AWIPS="NO"       # AWIPS products
+export WAFSF="NO"          # WAFS products
 
 # NO for retrospective parallel; YES for real-time parallel
 #  arch.sh uses REALTIME for MOS.  Need to set REALTIME=YES
@@ -65,14 +65,13 @@ export REALTIME="YES"
 # CLEAR
 ####################################################
 # Build paths relative to $HOMEgfs
-export HOMEgsi="$HOMEgfs"
 export FIXgsi="$HOMEgfs/fix/fix_gsi"
 export HOMEfv3gfs="$HOMEgfs/sorc/fv3gfs.fd"
 export HOMEpost="$HOMEgfs"
 export HOMEobsproc_prep="$BASE_GIT/obsproc/gfsv16/obsproc_prep.iss70457.netcdfhistory_new"
 export HOMEobsproc_network="$BASE_GIT/obsproc/gfsv16/obsproc_global.iss71402.supportGFSv16"
 export HOMEobsproc_global=$HOMEobsproc_network
-export BASE_VERIF="$BASE_SVN/verif/global/tags/vsdb"
+export BASE_VERIF="$BASE_GIT/verif/global/tags/vsdb"
 
 # CONVENIENT utility scripts and other environment parameters
 export NCP="/bin/cp -p"
@@ -113,6 +112,11 @@ export ATARDIR="/NCEPDEV/$HPSS_PROJECT/1year/$USER/$machine/scratch/$PSLOT"
 export envir=${envir:-"prod"}
 export NET="gfs"
 export RUN=${RUN:-${CDUMP:-"gfs"}}
+export COMINatmos=${ROTDIR}/${CDUMP}.${PDY}/${cyc}/atmos
+export COMOUTatmos=${ROTDIR}/${CDUMP}.${PDY}/${cyc}/atmos
+export COMINwave=${ROTDIR}/${CDUMP}.${PDY}/${cyc}/wave
+export COMOUTwave=${ROTDIR}/${CDUMP}.${PDY}/${cyc}/wave
+
 export jlogfile="${EXPDIR}/logs/jlogfile"
 export ERRSCRIPT=${ERRSCRIPT:-'eval [[ $err = 0 ]]'}
 export LOGSCRIPT=${LOGSCRIPT:-""}
@@ -124,6 +128,7 @@ export REDERR="2>"
 export SENDECF="NO"
 export SENDCOM="NO"
 export SENDDBN="NO"
+export SENDDBN_NTC="NO"
 export SENDSDM="NO"
 
 # Resolution specific parameters
@@ -265,7 +270,7 @@ export binary_diag=".false."
 export DO_METP="YES"                  # Run MET+ jobs
 
 # Archiving options
-export HPSSARCH="YES"        # save data to HPSS archive
+export HPSSARCH="@HPSSARCH@"        # save data to HPSS archive
 export ARCH_CYC=00           # Archive data at this cycle for warm_start capability
 export ARCH_WARMICFREQ=4     # Archive frequency in days for warm_start capability
 export ARCH_FCSTICFREQ=1     # Archive frequency in days for gdas and gfs forecast-only capability
