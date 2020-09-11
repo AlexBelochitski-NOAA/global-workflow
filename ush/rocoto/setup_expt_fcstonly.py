@@ -66,7 +66,6 @@ def edit_baseconfig():
                     .replace('@CASECTL@', 'C%d' % res) \
                     .replace('@HOMEgfs@', top) \
                     .replace('@BASE_GIT@', base_git) \
-                    .replace('@BASE_SVN@', base_svn) \
                     .replace('@DMPDIR@', dmpdir) \
                     .replace('@NWPROD@', nwprod) \
                     .replace('@HOMEDIR@', homedir) \
@@ -80,6 +79,7 @@ def edit_baseconfig():
                     .replace('@EXP_WARM_START@', exp_warm_start) \
                     .replace('@CHGRP_RSTPROD@', chgrp_rstprod) \
                     .replace('@CHGRP_CMD@', chgrp_cmd) \
+                    .replace('@HPSSARCH@', hpssarch) \
                     .replace('@gfs_cyc@', '%d' % gfs_cyc)
                 if expdir is not None:
                     line = line.replace('@EXPDIR@', os.path.dirname(expdir))
@@ -160,6 +160,7 @@ Create COMROT experiment directory structure'''
         queue_service = 'dev2_transfer'
       chgrp_rstprod = 'YES'
       chgrp_cmd = 'chgrp rstprod'
+      hpssarch = 'YES'
     elif machine == 'WCOSS_C':
       base_git = '/gpfs/hps3/emc/global/noscrub/emc.glopara/git'
       base_svn = '/gpfs/hps3/emc/global/noscrub/emc.glopara/svn'
@@ -175,6 +176,7 @@ Create COMROT experiment directory structure'''
       partition_batch = ''
       chgrp_rstprod = 'YES'
       chgrp_cmd = 'chgrp rstprod'
+      hpssarch = 'YES'
     elif machine == 'HERA':
       base_git = '/scratch1/NCEPDEV/global/glopara/git'
       base_svn = '/scratch1/NCEPDEV/global/glopara/svn'
@@ -190,6 +192,7 @@ Create COMROT experiment directory structure'''
       partition_batch = ''
       chgrp_rstprod = 'YES'
       chgrp_cmd = 'chgrp rstprod'
+      hpssarch = 'YES'
     elif machine == 'ORION':
       base_git = '/work/noaa/global/glopara/git'
       base_svn = '/work/noaa/global/glopara/svn'
@@ -205,6 +208,7 @@ Create COMROT experiment directory structure'''
       partition_batch = 'orion'
       chgrp_rstprod = 'NO'          # No rstprod on Orion
       chgrp_cmd = 'ls'
+      hpssarch = 'NO'
 
     # COMROT directory
     create_comrot = True
