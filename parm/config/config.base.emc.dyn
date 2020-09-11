@@ -158,8 +158,8 @@ export gfs_cyc=@gfs_cyc@ # 0: no GFS cycle, 1: 00Z only, 2: 00Z and 12Z only, 4:
 # GFS output and frequency
 export FHMIN_GFS=0
 
-export FHMAX_GFS_00=240
-#export FHMAX_GFS_00=384
+#export FHMAX_GFS_00=240
+export FHMAX_GFS_00=384
 export FHMAX_GFS_06=384
 export FHMAX_GFS_12=384
 export FHMAX_GFS_18=384
@@ -180,10 +180,10 @@ export restart_interval_gfs=0
 # WRITE_DOPOST=true, use inline POST
 export QUILTING=".true."
 export OUTPUT_GRID="gaussian_grid"
-export OUTPUT_FILE="nemsio"
-#export OUTPUT_FILE="netcdf"
-export WRITE_DOPOST=".false."
-#export WRITE_DOPOST=".true."
+#export OUTPUT_FILE="nemsio"
+export OUTPUT_FILE="netcdf"
+#export WRITE_DOPOST=".false."
+export WRITE_DOPOST=".true."
 
 # suffix options depending on file format
 if [ $OUTPUT_FILE = "netcdf" ]; then
@@ -197,8 +197,8 @@ else
 fi
 
 # IAU related parameters
-export DOIAU="NO"        # Enable 4DIAU for control with 3 increments
-#export DOIAU="YES"        # Enable 4DIAU for control with 3 increments
+#export DOIAU="NO"        # Enable 4DIAU for control with 3 increments
+export DOIAU="YES"        # Enable 4DIAU for control with 3 increments
 export IAUFHRS="3,6,9"
 export IAU_FHROT=`echo $IAUFHRS | cut -c1`
 export IAU_DELTHRS=6
@@ -215,8 +215,8 @@ fi
 export lobsdiag_forenkf=".true."
 
 # run GLDAS to spin up land ICs
-export DO_GLDAS="NO"
-#export DO_GLDAS="YES"
+#export DO_GLDAS="NO"
+export DO_GLDAS="YES"
 export gldas_cyc=00
 
 # run wave component
