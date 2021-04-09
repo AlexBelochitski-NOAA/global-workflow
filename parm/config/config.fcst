@@ -213,9 +213,11 @@ elif [[ "$CDUMP" == "gfs" ]] ; then # GFS cycle specific parameters
 
     # Write more variables to output
     if [ $QUILTING = ".true." -a $OUTPUT_GRID = "gaussian_grid" ]; then
-        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table"
+#        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table"
+        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_gen_nn_training_set_rad_extended"
     else
-        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_orig"
+#        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_orig"
+        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_gen_nn_training_set_rad_extended"
     fi
 
     # Write gfs restart files to rerun fcst from any break point         
