@@ -94,6 +94,15 @@ export iovr_lw=3    ;#de-correlation length cloud overlap method (Barker, 2008)
 export iovr_sw=3    ;#de-correlation length cloud overlap method (Barker, 2008)
 export icliq_sw=2   ;#cloud optical coeffs from AER's newer version v3.9-v4.0 for hu and stamnes
 
+# Neural network based emulator of radiative transfer parameterizations
+
+export do_lwnn=".false."
+export do_swnn=".false." 
+export gen_nn_training_set_rad=".true." 
+
+#  Call radiative transfer on each time step if uncommented
+#export FHSWR=$DELTIM 
+#export FHLWR=$DELTIM  
 
 # Microphysics configuration
 export dnats=0
@@ -214,10 +223,10 @@ elif [[ "$CDUMP" == "gfs" ]] ; then # GFS cycle specific parameters
     # Write more variables to output
     if [ $QUILTING = ".true." -a $OUTPUT_GRID = "gaussian_grid" ]; then
 #        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table"
-        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_gen_nn_training_set_rad_extended"
+        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_gen_nn_training_set_rad"
     else
 #        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_orig"
-        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_gen_nn_training_set_rad_extended"
+        export DIAG_TABLE="$HOMEgfs/parm/parm_fv3diag/diag_table_gen_nn_training_set_rad"
     fi
 
     # Write gfs restart files to rerun fcst from any break point         
