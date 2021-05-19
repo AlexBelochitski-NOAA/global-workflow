@@ -981,6 +981,9 @@ cat > input.nml <<EOF
   pdfcld       = ${pdfcld:-".false."}
   fhswr        = ${FHSWR:-"3600."}
   fhlwr        = ${FHLWR:-"3600."}
+  do_lwnn      = ${do_lwnn:-".false."}  
+  do_swnn      = ${do_swnn:-".false."}
+  gen_nn_training_set_rad   = ${gen_nn_training_set_rad:-".false."}
   ialb         = ${IALB:-"1"}
   iems         = ${IEMS:-"1"}
   iaer         = $IAER
