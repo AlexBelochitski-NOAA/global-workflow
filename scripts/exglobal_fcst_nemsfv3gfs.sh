@@ -1276,6 +1276,7 @@ if [ $QUILTING = ".true." -a $OUTPUT_GRID = "gaussian_grid" ]; then
   done
 else
     fhr=$FHMIN
+    affix=${affix:-"nc"}
     while [ $fhr -le $FHMAX ]; do
 	FH3=$(printf %03i $fhr)
  
@@ -1283,8 +1284,8 @@ else
 
 	    atmi=atmf${FH3}.tile${n}.$affix
 	    sfci=sfcf${FH3}.tile${n}.$affix
-	    atmo=$memdir/${CDUMP}.t${cyc}z.atmf${FH3}.tile${n}.$affix
-	    sfco=$memdir/${CDUMP}.t${cyc}z.sfcf${FH3}.tile${n}.$affix
+	    atmo=$FCSTDIR/${CDUMP}.t${cyc}z.atmf${FH3}.tile${n}.$affix
+	    sfco=$FCSTDIR/${CDUMP}.t${cyc}z.sfcf${FH3}.tile${n}.$affix
 	    eval $NLN $atmo $atmi
 	    eval $NLN $sfco $sfci
  
