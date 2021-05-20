@@ -1275,13 +1275,34 @@ if [ $QUILTING = ".true." -a $OUTPUT_GRID = "gaussian_grid" ]; then
     fhr=$((fhr+FHINC))
   done
 else
-  for n in $(seq 1 $ntiles); do
-    eval $NLN nggps2d.tile${n}.nc       $FCSTDIR/nggps2d.tile${n}.nc
-    eval $NLN nggps3d.tile${n}.nc       $FCSTDIR/nggps3d.tile${n}.nc
-    eval $NLN grid_spec.tile${n}.nc     $FCSTDIR/grid_spec.tile${n}.nc
-    eval $NLN atmos_static.tile${n}.nc  $FCSTDIR/atmos_static.tile${n}.nc
-    eval $NLN atmos_4xdaily.tile${n}.nc $FCSTDIR/atmos_4xdaily.tile${n}.nc
-  done
+    fhr=$FHMIN
+    while [ $fhr -le $FHMAX ]; do
+	FH3=$(printf %03i $fhr)
+ 
+	for n in $(seq 1 $ntiles); do
+
+	    atmi=atmf${FH3}.tile${n}.$affix
+	    sfci=sfcf${FH3}.tile${n}.$affix
+	    atmo=$memdir/${CDUMP}.t${cyc}z.atmf${FH3}.tile${n}.$affix
+	    sfco=$memdir/${CDUMP}.t${cyc}z.sfcf${FH3}.tile${n}.$affix
+	    eval $NLN $atmo $atmi
+	    eval $NLN $sfco $sfci
+ 
+	done
+
+	FHINC=$FHOUT
+	if [ $FHMAX_HF -gt 0 -a $FHOUT_HF -gt 0 -a $fhr -lt $FHMAX_HF ]; then
+	    FHINC=$FHOUT_HF
+	fi
+	fhr=$((fhr+FHINC))
+    done
+#  for n in $(seq 1 $ntiles); do
+#    eval $NLN nggps2d.tile${n}.nc       $FCSTDIR/nggps2d.tile${n}.nc
+#    eval $NLN nggps3d.tile${n}.nc       $FCSTDIR/nggps3d.tile${n}.nc
+#    eval $NLN grid_spec.tile${n}.nc     $FCSTDIR/grid_spec.tile${n}.nc
+#    eval $NLN atmos_static.tile${n}.nc  $FCSTDIR/atmos_static.tile${n}.nc
+#    eval $NLN atmos_4xdaily.tile${n}.nc $FCSTDIR/atmos_4xdaily.tile${n}.nc
+#  done
 fi
 
 #------------------------------------------------------------------
