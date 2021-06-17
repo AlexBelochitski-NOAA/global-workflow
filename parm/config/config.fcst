@@ -141,7 +141,8 @@ fi
 # ideflate: netcdf zlib lossless compression (0-9): 0 no compression
 # nbits: netcdf lossy compression level (0-32): 0 lossless
 export ideflate=1
-export nbits=14
+#export nbits=14
+export nbits=0
 export ishuffle=0
 # compression for RESTART files written by FMS 
 export shuffle=1
